@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './NewColletion.module.css'
 import ProductCard from '../../components/ProductCard/ProductCard';
 import axios from 'axios';
+import { apiService } from '../../services/apiService';
 
 const NewColletion = () => {
     const [products, setProducts] = useState([]);
@@ -11,9 +12,9 @@ const NewColletion = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('/api/new-in/');
-          setProducts(response.data);
-          setFilteredProducts(response.data);
+          const data = await apiService.get('/api/new-in/');
+          setProducts(data);
+          setFilteredProducts(data);
         } catch (err) {
           setError(err.message || 'Failed to load new collection products');
           console.error('Error fetching products:', err);
