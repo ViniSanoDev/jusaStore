@@ -19,8 +19,8 @@ const Women = () => {
     const loadProducts = async () => {
       try {
         const response = await apiService.get('/api/women');
-        setProducts(response.data);
-        setFilteredProducts(response.data);
+        setProducts(data);
+        setFilteredProducts(data);
       } catch (err) {
         setError(err.message || 'Failed to load women products');
         console.error('Error fetching products:', err);
