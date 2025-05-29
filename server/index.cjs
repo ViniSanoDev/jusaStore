@@ -25,4 +25,7 @@ app.use("/api/product", require("./routes/productById.cjs"));
 app.use("/api/user", require("./routes/user.cjs"));
 app.use("/api/cart", require("./routes/cart.cjs"));
 app.use("/api/orders", require("./routes/order.cjs"));
-app.listen(5000, () => console.log("Server running on port 5000"));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
