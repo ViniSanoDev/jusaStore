@@ -3,7 +3,7 @@ import styles from './MyDetailsBar.module.css';
 import Avatar from '../Avatar/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import axios from 'axios';
+import { apiService } from "../services/apiService";
 
 
 const MyDetailsBar = ({ onOptionClick }) => {
@@ -16,8 +16,7 @@ const MyDetailsBar = ({ onOptionClick }) => {
       if (user) {
         try {
           const token = localStorage.getItem("authToken");
-          console.log("Token:", token);
-          const { data } = await axios.get(`/api/user/${user.userId}`, {
+          const { data } = await apiService.get(`/api/user/${user.userId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUserData({ firstName: data.firstName || 'User', lastName: data.lastName || ''});
