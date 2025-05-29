@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
   proxy: {
     '/api': {
-      target: 'https://jusastoreserver.onrender.com', // Replace with your backend URL
+      target: 'https://jusastoreserver.onrender.com:5000', // Replace with your backend URL
       changeOrigin: true,
       secure: false,
       },
