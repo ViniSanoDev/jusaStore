@@ -19,17 +19,16 @@ const AddressForm = () => {
                 try {
                     const headers = getAuthHeaders();
                     const { data } = await apiService.get(`/api/user/${user.userId}`, { headers });
-                    setAddress({
-                        addressLine1: data.address?.addressLine1 || '',
-                        addressLine2: data.address?.addressLine2 || '',
-                        city: data.address?.city || '',
-                        postcode: data.address?.postcode || '',
-                        country: data.address?.country || '',      
-                    });
-                } catch (error) {
-                    console.error("Error fetching user data:", error);
-                    setMessage("Failed to fetch user data. Please try again.");
-                }
+    
+                    if (!data || !data.address) {
+                        throw new Error('Invalid response structure');
+                    }
+    
+                    setAddress({ ...address, ...data.address });
+                    } catch (error) {
+                        console.error("Error fetching user data:", error);
+                        setMessage("Failed to fetch user data. Please try again.");
+                    }
             }
         };
         fetchUserData();
