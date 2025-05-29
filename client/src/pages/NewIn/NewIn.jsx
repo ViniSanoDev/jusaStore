@@ -20,7 +20,7 @@ const NewIn = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await apiService.get('/api/new-in');
+          const data = await apiService.get('/api/new-in');
           setProducts(data);
           setFilteredProducts(data);
         } catch (err) {
