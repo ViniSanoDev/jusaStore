@@ -6,6 +6,7 @@ import axios from 'axios';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { useNavigate } from 'react-router-dom';
 import { changeSorting } from '../../utils/changeSorting';
+import { apiService } from '../../services/apiService';
 
 
 const Sale = () => {
@@ -18,9 +19,9 @@ const Sale = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('/api/sale/');
-          setProducts(response.data);
-          setFilteredProducts(response.data);
+          const data = await apiService.get('/api/women');
+          setProducts(data);
+          setFilteredProducts(data);
         } catch (err) {
           setError(err.message || 'Failed to load sale products');
           console.error('Error fetching products:', err);
