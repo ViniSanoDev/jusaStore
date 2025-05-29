@@ -6,7 +6,8 @@ require("dotenv").config();
 const app = express();
 app.use(cors({
     origin: "https://jusastore.onrender.com", 
-    credentials: true, 
+    credentials: true,
+    methods: 'GET,POST,PUT,DELETE',
   })
 );
 app.use(express.json());
