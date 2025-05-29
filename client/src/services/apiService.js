@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base URL for all API requests
-const API_BASE_URL =  'http://localhost:5000';
+const API_BASE_URL =  'https://jusastoreserver.onrender.com';
 
 // Service for handling all API requests
 export const apiService = {
