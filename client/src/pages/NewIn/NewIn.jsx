@@ -6,6 +6,7 @@ import axios from 'axios';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { useNavigate } from 'react-router-dom';
 import { changeSorting } from '../../utils/changeSorting';
+import { apiService } from '../../services/apiService';
 
 
 const NewIn = () => {
