@@ -18,7 +18,7 @@ const Women = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await apiService.get('/api/women');
+        const data = await apiService.get('/api/women');
         setProducts(data);
         setFilteredProducts(data);
       } catch (err) {
