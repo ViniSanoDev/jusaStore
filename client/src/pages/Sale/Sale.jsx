@@ -19,7 +19,7 @@ const Sale = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const data = await apiService.get('/api/women');
+          const data = await apiService.get('/api/sale');
           setProducts(data);
           setFilteredProducts(data);
         } catch (err) {
