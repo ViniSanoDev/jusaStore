@@ -6,6 +6,7 @@ import axios from 'axios';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { changeSorting } from '../../utils/changeSorting';
 import { useNavigate } from 'react-router-dom';
+import { apiService } from '../../services/apiService';
 
 const Men = () => {
   const [products, setProducts] = useState([]);
@@ -17,9 +18,9 @@ const Men = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await axios.get('/api/men');
-        setProducts(response.data);
-        setFilteredProducts(response.data);
+        const data = await apiService.get('/api/men');
+        setProducts(data);
+        setFilteredProducts(data);
       } catch (err) {
         setError(err.message || 'Failed to load men products');
         console.error('Error fetching products:', err);
