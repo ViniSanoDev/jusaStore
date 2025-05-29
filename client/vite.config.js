@@ -9,7 +9,7 @@ export default defineConfig({
     '/api': {
       target: 'https://jusastoreserver.onrender.com', // Replace with your backend URL
       changeOrigin: true,
-      secure: false,
+      secure: true,
       },
     },
   },
