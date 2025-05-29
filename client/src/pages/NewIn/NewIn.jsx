@@ -19,7 +19,7 @@ const NewIn = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('/api/new-in/');
+          const response = await apiService.get('/api/new-in/');
           setProducts(response.data);
           setFilteredProducts(response.data);
         } catch (err) {
