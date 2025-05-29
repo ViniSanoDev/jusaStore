@@ -6,6 +6,7 @@ import axios from 'axios';
 import { changeFiltering } from '../../utils/changeFiltering';
 import { changeSorting } from '../../utils/changeSorting';
 import { useNavigate } from 'react-router-dom';
+import { apiService } from '../../services/apiService';
 
 const Women = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ const Women = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await axios.get('/api/women/');
+        const response = await apiService.get('/api/women');
         setProducts(response.data);
         setFilteredProducts(response.data);
       } catch (err) {
