@@ -11,7 +11,7 @@ const NewColletion = () => {
     useEffect(() => {
       const loadProducts = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/api/new-in/');
+          const response = await axios.get('/api/new-in/');
           setProducts(response.data);
           setFilteredProducts(response.data);
         } catch (err) {
