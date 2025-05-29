@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import { apiService } from '../services/apiService';
 import { AuthContext, getAuthHeaders} from './AuthContext';
 
 const BagContext = createContext();
@@ -43,8 +43,7 @@ export const BagProvider = ({ children }) => {
       setLoading(true);
       setError(null);
       const headers = getAuthHeaders(); // Assuming getAuthHeaders is available in this scope
-      const response = await axios.get("/api/cart", { headers });
-      const cartData = response.data;
+      const cartData = await apiService.get("/api/cart", { headers });
 
       if (cartData && cartData.items) {
         setBagItems(normalizeCartItems(cartData.items)); // Assuming normalizeCartItems is available
@@ -77,9 +76,7 @@ export const BagProvider = ({ children }) => {
     try {
       console.log("Posting to /api/cart:", item);
       const headers = getAuthHeaders();
-      const response = await axios.post("/api/cart", item, { headers });
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.post("/api/cart", item, { headers });
 
       // Sync state with the updated backend response
       if (updatedCart && updatedCart.items) {
@@ -95,9 +92,8 @@ export const BagProvider = ({ children }) => {
   const updateQuantity = async (id, newQuantity, color, size) => {
     try {
       const headers = getAuthHeaders();
-      const response = await axios.put(`/api/cart/${id}`, { quantity: newQuantity, color, size}, { headers});
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.put(`/api/cart/${id}`, { quantity: newQuantity, color, size}, { headers});
+      
       if (updatedCart && updatedCart.items) {
         setBagItems(normalizeCartItems(updatedCart.items));
         return { success: true };
@@ -111,9 +107,7 @@ export const BagProvider = ({ children }) => {
   const removeItem = async (id, color, size) => {
     try {
       const headers = getAuthHeaders();
-      const response = await axios.delete(`/api/cart/${id}`, { headers, data: { color, size } });
-
-      const updatedCart = response.data;
+      const updatedCart = await apiService.delete(`/api/cart/${id}`, { headers, data: { color, size } });
 
       if (updatedCart && updatedCart.items) {
         setBagItems(normalizeCartItems(updatedCart.items));
