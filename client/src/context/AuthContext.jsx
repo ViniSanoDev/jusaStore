@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     const signin = async (email, password) => {
         try {
             const response = await apiService.post("/api/user/signin", { email, password });
-            const { token } = response.data;
+            const { token } = response;
             // Store token in localStorage
             localStorage.setItem("authToken", token);
 
