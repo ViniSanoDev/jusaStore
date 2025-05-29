@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styles from './PaymentDetails.module.css';
 import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
-import { apiService } from "../services/apiService"; 
+import { apiService } from '../../services/apiService';
 
 const PaymentDetails = () => {
     const [paymentDetails, setPaymentDetails] = useState({  

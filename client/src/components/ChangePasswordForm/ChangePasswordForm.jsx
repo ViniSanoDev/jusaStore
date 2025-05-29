@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './ChangePasswordForm.module.css';
-import { apiService } from "../services/apiService";
+import { apiService } from '../../services/apiService';
 import { getAuthHeaders } from '../../context/AuthContext';
 
 const ChangePasswordForm = () => {

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styles from './MyDetailsForm.module.css';
 import { AuthContext, getAuthHeaders } from '../../context/AuthContext';
-import { apiService } from "../services/apiService";
+import { apiService } from '../../services/apiService';
     
 const MyDetailsForm = () => {   
     const { user } = useContext(AuthContext);

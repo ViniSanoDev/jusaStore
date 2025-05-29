@@ -3,7 +3,7 @@ import styles from './MyDetailsBar.module.css';
 import Avatar from '../Avatar/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { apiService } from "../services/apiService";
+import { apiService } from '../../services/apiService';
 
 
 const MyDetailsBar = ({ onOptionClick }) => {
