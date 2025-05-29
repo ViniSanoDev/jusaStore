@@ -21,8 +21,8 @@ const NewIn = () => {
       const loadProducts = async () => {
         try {
           const response = await apiService.get('/api/new-in');
-          setProducts(response.data);
-          setFilteredProducts(response.data);
+          setProducts(data);
+          setFilteredProducts(data);
         } catch (err) {
           setError(err.message || 'Failed to load new products');
           console.error('Error fetching products:', err);
