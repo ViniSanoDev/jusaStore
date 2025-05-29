@@ -17,7 +17,7 @@ const Men = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await axios.get('/api/new-in/');
+        const response = await axios.get('/api/men/');
         setProducts(response.data);
         setFilteredProducts(response.data);
       } catch (err) {
